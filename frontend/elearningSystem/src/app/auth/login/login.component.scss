@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+$primary-blue: #004AAD;
+$secondary-blue: #E0F2F7;
+$accent-coral: #FF6B6B;
+$text-dark: #333333;
+$text-light: #FFFFFF;
+$subtle-gray: #CCCCCC;
+$error-red: #F44336;
+
+.auth-page-wrapper {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, $secondary-blue 0%, #c4e9f7 100%); // Gradient background
+  padding: 20px;
+}
+
+.auth-card {
+  background-color: $text-light;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); // Deeper shadow
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+  border: 1px solid rgba($primary-blue, 0.1);
+
+  .auth-header {
+    margin-bottom: 35px;
+
+    .header-title {
+      font-size: 2.2em;
+      color: $primary-blue;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .header-subtitle {
+      font-size: 1em;
+      color: lighten($text-dark, 15%);
+      line-height: 1.5;
+    }
+  }
+
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; // Space between form groups
+    margin-bottom: 25px;
+
+    .form-group {
+      text-align: left; // Align label and input to left
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .form-label {
+        font-size: 0.95em;
+        color: $text-dark;
+        font-weight: 600;
+      }
+
+      .form-input {
+        padding: 14px 18px;
+        border: 1px solid $subtle-gray;
+        border-radius: 8px;
+        font-size: 1em;
+        color: $text-dark;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        background-color: #fcfcfc;
+
+        &:focus {
+          outline: none;
+          border-color: $primary-blue;
+          box-shadow: 0 0 0 3px rgba($primary-blue, 0.2);
+        }
+
+        &::placeholder {
+          color: lighten($subtle-gray, 5%);
+        }
+
+        &.is-invalid {
+          border-color: $error-red;
+        }
+      }
+
+      .validation-feedback {
+        color: $error-red;
+        font-size: 0.85em;
+        margin-top: 4px;
+        text-align: left;
+      }
+    }
+
+    .form-message {
+      padding: 12px 15px;
+      border-radius: 8px;
+      font-size: 0.9em;
+      font-weight: 500;
+      text-align: center;
+      margin-top: 10px; // Space above error message
+    }
+
+    .error-message {
+      background-color: lighten($error-red, 40%);
+      color: darken($error-red, 15%);
+      border: 1px solid lighten($error-red, 20%);
+    }
+
+    .submit-button {
+      background-color: $accent-coral;
+      color: $text-light;
+      border: none;
+      padding: 14px 25px;
+      border-radius: 50px;
+      font-size: 1.05em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin-top: 15px;
+      box-shadow: 0 4px 10px rgba($accent-coral, 0.3);
+      width: 100%; // Full width button
+
+      &:hover:not([disabled]) {
+        background-color: darken($accent-coral, 10%);
+        transform: translateY(-2px);
+      }
+
+      &:active:not([disabled]) {
+        transform: translateY(0);
+        box-shadow: 0 2px 5px rgba($accent-coral, 0.3);
+      }
+
+      &:disabled {
+        background-color: lighten($subtle-gray, 10%);
+        cursor: not-allowed;
+        opacity: 0.8;
+        transform: none;
+        box-shadow: none;
+      }
+    }
+  }
+
+  .auth-footer {
+    font-size: 0.95em;
+    color: lighten($text-dark, 20%);
+    margin-top: 25px; // Space above footer links
+
+    .auth-link {
+      color: $primary-blue;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: darken($primary-blue, 10%);
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 600px) {
+  .auth-card {
+    margin: 20px;
+    padding: 30px 20px;
+  }
+  .auth-header .header-title {
+    font-size: 1.8em;
+  }
+  .auth-header .header-subtitle {
+    font-size: 0.9em;
+  }
+}

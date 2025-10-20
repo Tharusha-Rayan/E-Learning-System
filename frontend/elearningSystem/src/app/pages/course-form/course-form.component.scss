@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+$primary-blue: #004AAD;
+$secondary-blue: #E0F2F7;
+$accent-coral: #FF6B6B;
+$text-dark: #333333;
+$text-light: #FFFFFF;
+$subtle-gray: #CCCCCC;
+$success-green: #4CAF50;
+$error-red: #F44336;
+
+.course-form-container {
+  font-family: 'Poppins', sans-serif;
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: 40px auto;
+  background-color: $text-light; // White background for the form card
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); // More prominent shadow for the form card
+  border: 1px solid $secondary-blue; // Subtle border
+
+  .form-header {
+    text-align: center;
+    margin-bottom: 40px;
+
+    .header-title {
+      font-size: 2.5em;
+      color: $primary-blue;
+      margin-bottom: 15px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .header-subtitle {
+      font-size: 1.05em;
+      color: lighten($text-dark, 15%);
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  .course-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; // Space between form groups
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px; // Space between label and input
+
+      .form-label {
+        font-size: 1.05em;
+        color: $text-dark;
+        font-weight: 600;
+      }
+
+      .form-input,
+      .form-textarea {
+        padding: 15px 20px;
+        border: 1px solid $subtle-gray;
+        border-radius: 8px;
+        font-size: 1em;
+        color: $text-dark;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        background-color: #fcfcfc; // Slightly off-white background for inputs
+
+        &:focus {
+          outline: none;
+          border-color: $primary-blue;
+          box-shadow: 0 0 0 3px rgba($primary-blue, 0.2);
+        }
+
+        &::placeholder {
+          color: lighten($subtle-gray, 5%);
+        }
+      }
+
+      .form-textarea {
+        resize: vertical; // Allow vertical resizing
+        min-height: 120px;
+      }
+    }
+
+    .submit-button {
+      background-color: $accent-coral;
+      color: $text-light;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 50px; // Pill shape
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin-top: 20px; // Space above button
+      align-self: flex-end; // Align button to the right
+      min-width: 200px;
+      box-shadow: 0 4px 10px rgba($accent-coral, 0.3);
+
+
+      &:hover:not([disabled]) {
+        background-color: darken($accent-coral, 10%);
+        transform: translateY(-2px);
+      }
+
+      &:active:not([disabled]) {
+        transform: translateY(0);
+        box-shadow: 0 2px 5px rgba($accent-coral, 0.3);
+      }
+
+      &:disabled {
+        background-color: lighten($subtle-gray, 10%);
+        cursor: not-allowed;
+        opacity: 0.8;
+        transform: none;
+        box-shadow: none;
+      }
+    }
+
+    .form-message {
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-top: 15px;
+      font-size: 0.95em;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .success-message {
+      background-color: lighten($success-green, 40%);
+      color: darken($success-green, 15%);
+      border: 1px solid lighten($success-green, 20%);
+    }
+
+    .error-message {
+      background-color: lighten($error-red, 40%);
+      color: darken($error-red, 15%);
+      border: 1px solid lighten($error-red, 20%);
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .course-form-container {
+    margin: 20px auto;
+    padding: 30px 15px;
+  }
+  .form-header {
+    margin-bottom: 30px;
+    .header-title {
+      font-size: 2em;
+    }
+    .header-subtitle {
+      font-size: 0.9em;
+    }
+  }
+  .submit-button {
+    align-self: stretch; // Full width button on small screens
+    min-width: unset;
+  }
+}
