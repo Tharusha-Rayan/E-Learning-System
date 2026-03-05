@@ -1,0 +1,45 @@
+<div class="course-form-container">
+  <header class="form-header">
+    <h2 class="header-title">Create a New Course</h2>
+    <p class="header-subtitle">Fill in the details below to add a new course to your e-learning platform.</p>
+  </header>
+
+  <form (ngSubmit)="submit()" class="course-form">
+    <div class="form-group">
+      <label for="courseTitle" class="form-label">Course Title</label>
+      <input
+        id="courseTitle"
+        [(ngModel)]="course.title"
+        name="title"
+        placeholder="e.g., Introduction to Web Development"
+        class="form-input"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="courseDescription" class="form-label">Course Description</label>
+      <textarea
+        id="courseDescription"
+        [(ngModel)]="course.description"
+        name="description"
+        placeholder="Provide a detailed overview of what the course covers, learning outcomes, etc."
+        class="form-textarea"
+        rows="6"
+        required
+      ></textarea>
+    </div>
+
+    <button type="submit" class="submit-button" [disabled]="isSubmitting">
+      {{ isSubmitting ? 'Creating Course...' : 'Create Course' }}
+    </button>
+
+    <div *ngIf="successMessage" class="form-message success-message">
+      {{ successMessage }}
+    </div>
+
+    <div *ngIf="errorMessage" class="form-message error-message">
+      {{ errorMessage }}
+    </div>
+  </form>
+</div>

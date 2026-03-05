@@ -1,0 +1,51 @@
+// course-details-dialog.component.scss
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+.mat-dialog-container { // This targets the dialog container itself
+    font-family: 'Poppins', sans-serif;
+}
+
+h2.mat-dialog-title {
+    color: #004AAD;
+    font-weight: 700;
+    font-size: 1.8em;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #E0F2F7;
+    margin-bottom: 20px;
+}
+
+.mat-dialog-content.course-details-content {
+    padding-top: 20px; // Adjust if needed with actual mat-dialog-content padding
+    line-height: 1.8;
+    font-size: 1.1em;
+    color: #333;
+
+    strong {
+        color: #004AAD;
+        font-weight: 600;
+        margin-right: 5px;
+    }
+
+    p {
+        margin-bottom: 10px;
+    }
+}
+
+.mat-dialog-actions {
+    padding-top: 20px;
+    border-top: 1px solid #E0F2F7;
+    margin-top: 20px;
+
+    button.mat-button {
+        background-color: #004AAD;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+        font-weight: 500;
+        min-width: 80px;
+    }
+    button.mat-button:hover {
+        background-color: #003380;
+    }
+}

@@ -1,0 +1,55 @@
+<div class="course-list-container">
+    <header class="course-list-header">
+        <h2 class="header-title">Explore Our Courses</h2>
+        <p class="header-subtitle">Unlock new skills and opportunities with our diverse range of e-learning programs.
+        </p>
+        <!-- Create Course button - strategically placed in the header -->
+        <div class="header-actions">
+            <button *ngIf="showCreateButton()" class="btn-create-course" routerLink="/courses/create">
+                <i class="material-icons">add_circle_outline</i> Create New Course
+            </button>
+        </div>
+    </header>
+
+    <div *ngIf="isLoading" class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading courses...</p>
+    </div>
+
+    <div *ngIf="!isLoading && courses.length === 0 && !hasError" class="empty-state">
+        <p>No courses available yet. Be the first to add one!</p>
+        <button *ngIf="showCreateButton()" class="btn-create-course-empty" routerLink="/courses/create">
+            <i class="material-icons">add_circle_outline</i> Create Course
+        </button>
+    </div>
+
+    <div *ngIf="!isLoading && hasError" class="error-state">
+        <p>Failed to load courses. Please try again later.</p>
+        <button class="btn-retry" (click)="loadCourses()">Retry Loading</button>
+    </div>
+
+    <div *ngIf="!isLoading && courses.length > 0" class="course-grid">
+        <div *ngFor="let course of courses" class="course-card">
+            <div class="card-content">
+                <h3 class="course-title">{{ course.title }}</h3>
+                <p class="course-description">{{ course.description }}</p>
+                <div class="course-actions-group">
+                    <button class="btn-action btn-view" (click)="viewCourseDetails(course.id)">
+                        <i class="material-icons">visibility</i> View Details
+                    </button>
+                    <button *ngIf="showEditDeleteButtons()" class="btn-action btn-edit" (click)="editCourse(course.id)">
+                        <i class="material-icons">edit</i> Edit
+                    </button>
+                    <button *ngIf="showEditDeleteButtons()" class="btn-action btn-delete" (click)="deleteCourse(course.id)">
+                        <i class="material-icons">delete</i> Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Important: You'll also need to add a router-outlet if this is your main view
+     and you're navigating to /courses/create or /courses/edit/:id
+<router-outlet></router-outlet>
+-->
